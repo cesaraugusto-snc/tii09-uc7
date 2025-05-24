@@ -33,4 +33,4 @@ class Produto
     public function setAtivo(bool $ativo) { $this->ativo = $ativo; }
     public function setDataDeCadastro(string $cadastro) { $this->dataDeCadastro = $cadastro; }
     public function setDataDeValidade(?string $validade) { $this->dataDeValidade = $validade; }
-} 
+}

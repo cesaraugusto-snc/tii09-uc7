@@ -1,31 +1,26 @@
-<table border = "2" style="background-color: aqua;">
+<table border="2" style="background-color: lightblue;">
+    <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Cidade</th>
+    </tr>
 <?php
-$cliente = 
-    [   [
-
-            "nome" => "César",
-            "cpf" => "00011122265",
-            "cidade"  => "São Paulo"
-        
+$clientes =
+    [
+        [
+            "nome" => "John",
+            "cpf" => "11122233344",
+            "cidade" => "Sao Paulo"
         ],
         [
-            "nome" => "Renan",
-            "cpf" => "00011555265",
-            "cidade"  => "Rio de Janeiro"
-        ],
-        [
-            "nome" => "Luan",
-            "cpf" => "00011555355",
-            "cidade"  => "São Paulo"
+            "nome" => "Mary",
+            "cpf" => "33322211144",
+            "cidade" => "Santo Andre"
         ]
     ];
-    foreach($cliente as $c){
-        echo "<tr>
-                <td>{$c['nome']}</td>
-                <td>{$c['cpf']}</td>
-                <td>{$c['cidade']}</td>
-            </tr>";
-    }
 
+    foreach($clientes as $c) {
+        echo "<tr><td>{$c['nome']}</td><td>{$c['cpf']}</td><td>{$c['cidade']}</td></tr>";
+    }
 ?>
 </table>
