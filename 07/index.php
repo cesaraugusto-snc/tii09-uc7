@@ -11,6 +11,7 @@ $produtos = $dao->getAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista De Produtos</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h2>Lista de Produtos</h2>
@@ -28,12 +29,35 @@ $produtos = $dao->getAll();
             <td><?= $prd->getNome() ?></td>
             <td><?= $prd->getPreco() ?></td>
             <td>
-                <a href="./frontend/produto_details.php?id=">Detalhes</a>
+                <a href="./frontend/produto_details.php?id=<?= $prd->getId() ?>">Detalhes</a>
                 <a href="./frontend/produto_form.php?id=<?= $prd->getId() ?>">Editar</a>
-                <a href="#">Excluir</a>
+                <a href="./frontend/produto_delete.php?id=<?= $prd->getId() ?>">Excluir</a>
             </td>
         </tr>
         <?php endforeach; ?>
+    </table>
+
+    <h2>Lista de Clientes</h2>
+
+    <a href="./frontend/cliente_form.php">Cadastrar Novo Cliente</a>
+
+    <table border="1" cellpading="4">
+        <tr>
+            <td>Nome</td>
+            <td>CPF</td>
+            <td>Ações</td>
+        </tr>
+        <!-- <?php foreach($clientes as $cli): ?> -->
+        <tr>
+            <td><?= $cli->getNome() ?></td>
+            <td><?= $cli->getCpf() ?></td>
+            <td>
+                <a href="#">Detalhes</a>
+                <a href="#">Editar</a>
+                <a href="#">Excluir</a>
+            </td>
+        </tr>
+        <!-- <?php endforeach; ?> -->
     </table>
 </body>
 </html>

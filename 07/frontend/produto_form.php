@@ -8,7 +8,7 @@ if (isset($_GET['id'])) {
     $produto = $dao->getById($_GET['id']);
 }
 
-if($_POST) {
+if ($_POST) {
 
     $id = $_POST['id'] ?? null;
     $nome = $_POST['nome'];
@@ -19,7 +19,7 @@ if($_POST) {
 
     $produto = new Produto($id, $nome, $preco, $ativo, $dataDeCadastro, $dataDeValidade);
 
-    if($id) {
+    if ($id) {
         $dao->update($produto);
     } else {
         $dao->create($produto);
@@ -39,6 +39,7 @@ if($_POST) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <title>Formulario de Produto</title> -->
     <title><?= $produto ? 'Edição de Produto' : 'Cadastro de Produto' ?></title>
+    <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
@@ -56,7 +57,7 @@ if($_POST) {
         <input type="number" name="preco" step="0.01" required value="<?= $produto ? $produto->getPreco() : '' ?>"><br>
 
         <label>Ativo:</label>
-        <input type="checkbox" name="ativo" value="<?= $produto && $produto->getAtivo() ? 'checked' : '' ?>"><br>
+        <input type="checkbox" name="ativo" value="1" <?= $produto && $produto->getAtivo() ? 'checked' : '' ?>><br>
 
         <label>Data de Cadastro:</label>
         <input type="date" name="dataDeCadastro" required value="<?= $produto ? $produto->getDataDeCadastro() : '' ?>"><br>
