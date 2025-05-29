@@ -1,8 +1,12 @@
 <?php
 require_once './backend/ProdutoDAO.php';
+require_once './backend/ClienteDAO.php';
 
-$dao = New ProdutoDAO();
-$produtos = $dao->getAll();
+$daoProduto = New ProdutoDAO();
+$daoCliente = New ClienteDAO();
+$produtos = $daoProduto->getAll();
+$clientes = $daoCliente->getAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -52,9 +56,9 @@ $produtos = $dao->getAll();
             <td><?= $cli->getNome() ?></td>
             <td><?= $cli->getCpf() ?></td>
             <td>
-                <a href="#">Detalhes</a>
+                <a href="./frontend/cliente_details.php?id=<?= $cli->getId() ?>">Detalhes</a>
                 <a href="#">Editar</a>
-                <a href="#">Excluir</a>
+                <a href="./frontend/cliente_delete.php?id=<?= $clie->getId() ?>">Excluir</a>
             </td>
         </tr>
         <!-- <?php endforeach; ?> -->

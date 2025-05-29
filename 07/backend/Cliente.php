@@ -1,35 +1,34 @@
 <?php
 
-Class Produto
+Class Cliente
 {
     private ?int $id;
     private string $nome;
-    private float $cpf;
+    private string $cpf;
     private bool $ativo;
-    private string $dataNascimento;
+    private string $dataDeNascimento;
     
-    public function __construct(?int $id, string $nome, float $cpf,bool $ativo, string $dataNascimento )
+    public function __construct(?int $id, string $nome, string $cpf,bool $ativo, string $dataDeNascimento )
     {
         $this->id = $id;
         $this->nome = $nome;
         $this->cpf = $cpf;
         $this->ativo = $ativo;
-        $this->dataNascimento = $dataNascimento;
+        $this->dataDeNascimento = $dataDeNascimento;
     }
 
     // Getters
     public function getId(): ?int { return $this->id; }
     public function getNome(): string { return $this->nome; }
-    public function getCpf(): float { return $this->cpf; }
+    public function getCpf(): string { return $this->cpf; }
     public function getAtivo(): bool { return $this->ativo; }
-    public function getdataNascimento(): string { return $this->dataNascimento; }
+    public function getdataDeNascimento(): string { return $this->dataDeNascimento; }
 
      // Setters
      public function setNome(string $nome) { $this->nome = $nome; }
-     public function setCpf(float $cpf) { $this->cpf = $cpf; }
+     public function setCpf(string $cpf) { $this->cpf = $cpf; }
      public function setAtivo(bool $ativo) { $this->ativo = $ativo; }
-     public function setDataNascimento(string $dataNascimento) { $this->dataNascimento = $dataNascimento; }
-    
+     public function setdataDeNascimento(string $dataDeNascimento) { $this->dataDeNascimento = $dataDeNascimento; }   
 }
 
 ?>
