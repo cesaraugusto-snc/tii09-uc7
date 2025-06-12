@@ -1,6 +1,5 @@
 <?php
 require_once '../backend/ClienteDAO.php';
-
 $dao = new ClienteDAO();
 
 if (!isset($_GET['id'])) {
@@ -8,10 +7,10 @@ if (!isset($_GET['id'])) {
     exit;
 }
 
-$clientes = $dao->getById($_GET['id']);
+$cliente = $dao->getById($_GET['id']);
 
-if (!$clientes) {
-    echo "Produto não encontrado.";
+if (!$cliente) {
+    echo "Clinete não encontrado.";
     echo "<a href='../index.php'>Voltar</a>";
     exit;
 }
@@ -28,13 +27,13 @@ if (!$clientes) {
 </head>
 
 <body>
-    <h2>Detalhes de Cliente</h2>
+    <h2>Detalhes do Cliente</h2>
     <ul>
         <li><strong>ID: </strong><?= $cliente->getId() ?></li>
-        <li><strong>Nome: </strong><?= $cliente->getNome() ?></li>
-        <li><strong>CPF: </strong><?= $cliente->getCpf() ?></li>
+        <li><strong>Nome: </strong><?= $cliente->getNome() ?></li>        
+        <li><strong>CPF: </strong><?= $cliente->getCpf() ?></li>        
         <li><strong>Ativo: </strong><?= $cliente->getAtivo() ? 'Sim' : 'Não' ?></li>
-        <li><strong>Data de Nascimento: </strong><?= $cliente->getdataDeNascimento() ?></li>
+        <li><strong>Data de Nasicmento: </strong><?= $cliente->getDataDeNascimento() ?></li>
     </ul>
 </body>
 

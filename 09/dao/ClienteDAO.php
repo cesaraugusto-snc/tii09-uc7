@@ -17,9 +17,9 @@ class ClienteDAO
         $stmt = $this->db->query("SELECT * FROM clientes");
         $clientesData = $stmt->fetchAll();
         $clientes = [];
-        
-        foreach($clientesData as $data){
-            $clientes[] = new Cliente($data['id'],$data['nome'],$data['cpf'],$data['dataDeNascimento'],$data['ativo']);
+
+        foreach($clientesData as $data) {
+            $clientes[] = new Cliente($data['id'], $data['nome'], $data['cpf'], $data['dataDeNascimento'], $data['ativo']);
         }
         return $clientes;
     }
@@ -30,9 +30,10 @@ class ClienteDAO
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         $data = $stmt->fetch();
-        if($data){
-            return new Cliente($data['id'],$data['nome'],$data['cpf'],$data['dataDeNascimento'],$data['ativo']);
+        if($data) {
+            return new Cliente($data['id'], $data['nome'], $data['cpf'], $data['dataDeNascimento'], $data['ativo']);
         }
+        
         return null;
     }
 
@@ -45,7 +46,7 @@ class ClienteDAO
             ':nome' => $cliente->getNome(),
             ':cpf' => $cliente->getCpf(),
             ':dataDeNascimento' => $cliente->getDataDeNascimento(),
-            ':ativo'=>$cliente->getAtivo() ? 1 : 0
+            ':ativo' => $cliente->getAtivo() ? 1 : 0
         ]);
     }
 
@@ -55,11 +56,11 @@ class ClienteDAO
         $stmt = $this->db->prepare($sql);
         
         return $stmt->execute([
-            ':id'=>$cliente->getId(),
+            ':id' => $cliente->getId(),
             ':nome' => $cliente->getNome(),
             ':cpf' => $cliente->getCpf(),
-            ':dataDeNascimento' => $cliente->getDataDeNascimento(),
-            ':ativo'=>$cliente->getAtivo() ? 1 : 0
+            ':dataDeNascimento'=> $cliente->getDataDeNascimento(),
+            ':ativo' => $cliente->getAtivo() ? 1 : 0
         ]);
     }
 

@@ -14,9 +14,12 @@ class ProdutoDAO
     public function getAll(): array
     {
         $stmt = $this->db->query("SELECT * FROM produtos");
-        
+        $produtoData = $stmt->fetchAll();
         $produtos = [];
-        
+
+        foreach($produtoData as $pro ){
+            $produtos[] = new Produto($pro['id'], $pro['nome'], $pro['preco'], $pro['ativo'], $pro['dataDeCadastro'], $pro['dataDeValidade']);
+        }
         return $produtos;
     }
 

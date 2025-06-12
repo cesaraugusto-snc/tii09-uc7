@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 $pessoas = [
     ['id' => 1, 'nome' => 'João'],
     ['id' => 2, 'nome' => 'Maria'],
-    ['id' => 3, 'nome' => 'José']
+    ['id' => 3, 'nome' => 'José'],
 ];
 
 $rota = $_GET['rota'] ?? '';
@@ -14,23 +14,20 @@ $metodo = $_SERVER['REQUEST_METHOD'];
 
 // echo json_encode("Olá cliente, vc acesscou com o método " . $metodo);
 
-if($metodo == 'GET' && $rota == 'ola') 
-{
+if($metodo == 'GET' && $rota == 'ola') {
     echo json_encode(['mensagem' => "Olá Mundo"]);
     exit;
 }
 
-if ($metodo == 'GET' && $rota == 'ola-nome') 
-{
+if ($metodo == 'POST' && $rota == 'ola-nome') {
     $nome = $_GET['nome'];
     echo json_encode(['mensagem' => "Olá, $nome"]);
     exit;
 }
 
-if($metodo == 'GET' && $rota == 'pessoas') 
-{
-   echo json_encode($pessoas);
-   exit;
+if ($metodo == 'GET' && $rota == 'pessoas') {
+    echo json_encode($pessoas);
+    exit;
 }
 
 if($metodo == 'POST' && $rota == 'cadastrar-url')
@@ -40,11 +37,11 @@ if($metodo == 'POST' && $rota == 'cadastrar-url')
 
     if(!$id || !$nome)
     {
-        echo json_encode(['erro' => 'Informe o id e o nome na URL']);
+        echo json_encode(['erro' => 'Informe o id e nome na URL']);
         exit;
     }
 
-    $pessoas = ['id' => (int)$id,'nome' => $nome];
+    $pessoas[] = ['id' => (int)$id, 'nome' => $nome];
 
     echo json_encode([
         'mensagem' => 'Pessoa cadastrada com sucesso!',
@@ -61,7 +58,6 @@ if($metodo == 'POST' && $rota == 'cadastrar-body')
     $nome = $input['nome'] ?? null;
     $senha = $input['password'] ?? null;
 
-
     if(!$id || !$nome)
     {
         echo json_encode(['erro' => 'Informe o id e nome na URL']);
@@ -77,6 +73,6 @@ if($metodo == 'POST' && $rota == 'cadastrar-body')
     exit;
 }
 
+
 http_response_code(404);
 echo json_encode(['erro' => 'Rota não encontrada']);
-?>

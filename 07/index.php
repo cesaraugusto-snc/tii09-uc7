@@ -5,8 +5,7 @@ require_once './backend/ClienteDAO.php';
 $daoProduto = New ProdutoDAO();
 $daoCliente = New ClienteDAO();
 $produtos = $daoProduto->getAll();
-$clientes = $daoCliente->getAll();
-
+$clientes = $daoCliente->getAllAlternativo();
 ?>
 
 <!DOCTYPE html>
@@ -51,17 +50,17 @@ $clientes = $daoCliente->getAll();
             <td>CPF</td>
             <td>Ações</td>
         </tr>
-        <!-- <?php foreach($clientes as $cli): ?> -->
+        <?php foreach($clientes as $cli): ?>
         <tr>
             <td><?= $cli->getNome() ?></td>
             <td><?= $cli->getCpf() ?></td>
             <td>
                 <a href="./frontend/cliente_details.php?id=<?= $cli->getId() ?>">Detalhes</a>
                 <a href="#">Editar</a>
-                <a href="./frontend/cliente_delete.php?id=<?= $clie->getId() ?>">Excluir</a>
+                <a href="./frontend/cliente_delete.php?id=<?= $cli->getId() ?>">Excluir</a>
             </td>
         </tr>
-        <!-- <?php endforeach; ?> -->
+        <?php endforeach; ?>
     </table>
 </body>
 </html>
