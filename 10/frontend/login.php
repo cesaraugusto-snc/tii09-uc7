@@ -2,6 +2,12 @@
 session_start();
 require_once '../UsuarioDAO.php';
 
+if(isset($_SESSION['token']))
+{
+    header('Location: index.php');
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);

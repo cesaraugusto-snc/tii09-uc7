@@ -8,7 +8,7 @@ class Usuario
     private string $email;
     private ?string $token;
 
-    public function __construct(?int $id, string $nome, string $senha, string $email, ?string $token = null)
+    public function __construct(?int $id, string $nome, string $senha, string $email, ?string $token = null) 
     {
         $this->id = $id;
         $this->nome = $nome;
@@ -17,10 +17,9 @@ class Usuario
         $this->token = $token;
     }
 
-    public function getId(): ?int { return $this->id;}
-    public function getNome(): string { return $this->nome;}
-    public function getSenha(): string { return $this->senha;}
-    public function getEmail(): string { return $this->email;}
-    public function getToken(): ?string { return $this->token;}
-
+    public function getId(): ?int { return $this->id; }
+    public function getNome(): string { return $this->nome; }
+    public function getSenha(): string { return $this->senha; }
+    public function getEmail(): string { return $this->email; }
+    public function getToken(): ?string { return $this->token; }
 }

@@ -15,7 +15,6 @@ class Database
             $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             return $pdo;
         } catch (PDOException $e) {
-            // Em produção, gravar isso em um LOG
             die("Erro de conexão com o banco: " . $e->getMessage());
         }
     }
